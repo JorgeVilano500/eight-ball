@@ -28,7 +28,7 @@ function App() {
 
 
   return (
-    <body className='min-h-screen font-sans bg-black'>
+    <div className='min-h-screen font-sans bg-zinc-800'>
       <div className='min-h-screen flex flex-col text-center'>
         <header className={`flex justify-center pt-6 px-4 transition-all duration-700 ease-out ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
           <Navbar />
@@ -42,11 +42,12 @@ function App() {
 
         <section>
           <div className={`mt-[clamp(12px,8vh,72px)] flex justify-center transition-all duration-700 delay-300 ease-out ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-            <BallCanvas icon={html}/>
-
+            <button className='cursor-pointer' onClick={onSubmitForm}>
+              <BallCanvas icon={html}/>
+            </button>
 
           </div>
-          <p className={`mt-4 text-xl text-zinc-400 transition-opacity duration-700 delay-500 ${loaded ? 'opacity-100' : 'opacity-0'} `}>Ask the ball a question</p>
+          <p className={`mt-4 text-xl text-zinc-400 transition-opacity duration-700 delay-500 ${loaded ? 'opacity-100' : 'opacity-0'} `}>Ask the ball a question or Tap it </p>
         </section>
 
         </main>
@@ -80,7 +81,7 @@ function App() {
 
         </footer>
       </div>
-    </body>
+    </div>
   )
 }
 
