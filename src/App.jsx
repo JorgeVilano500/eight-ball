@@ -11,6 +11,8 @@ function App() {
   const [loaded, setLoaded] = useState(false);
   const [inputText, setInputText] = useState('');
   const [responseText, setResponseText] = useState('');
+  const [showResponse, setShowResponse] = useState(false);
+  const [animationKey, setAnimationKey] = useState(0);
 
 
 
@@ -19,7 +21,24 @@ function App() {
     return () => clearTimeout(timeout)
   }, [])
 
+  // Trigger fade-in animation when animationKey changes
+  useEffect(() => {
+    if (responseText) {
+      setShowResponse(false); // Reset to start fade-in
+      // Small delay to ensure the reset happens before fade-in
+      const timer = setTimeout(() => {
+        setShowResponse(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [animationKey, responseText])
+
   const onSubmitForm = () => {
+    // Reset animation state first
+    setShowResponse(false);
+    // Increment key to force animation restart
+    setAnimationKey(prev => prev + 1);
+    
     const randomIndex = Math.floor(Math.random() * responses.length);
     const randomResponse = responses[randomIndex];
     setResponseText(randomResponse);
@@ -37,7 +56,12 @@ function App() {
         <main className='flex-1 flex flex-col justify-evenly items-center px-4'>
 
           <div>
-            <p className={`text-zinc-400 text-4xl transition-all duration-700 delay-200 ease-out ${responseText ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>{responseText || 'Placeholder text'}</p>
+            <p 
+              key={animationKey}
+              className={`text-zinc-400 text-4xl transition-opacity duration-[2000ms] ease-in ${showResponse && responseText ? 'opacity-100' : 'opacity-0'}`}
+            >
+              {responseText || 'Placeholder text'}
+            </p>
           </div>
 
         <section>

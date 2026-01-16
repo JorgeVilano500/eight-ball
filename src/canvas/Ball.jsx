@@ -37,7 +37,7 @@ const Ball = memo((props) => {
             <ambientLight intensity={0.25} />
             <directionalLight position={[0, 0, 0.05]} />
             <mesh ref={meshRef} castShadow receiveShadow scale={2.75}>
-                <icosahedronGeometry args={[1,1]} />
+                <sphereGeometry args={[1, 32, 32]} />
                 <meshStandardMaterial 
                     color={"#14161A"}
                     polygonOffset
