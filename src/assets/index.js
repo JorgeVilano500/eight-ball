@@ -1,6 +1,6 @@
-import html from './html.png'
+import ball from './ballv2.png';
 
 
 export {
-    html
+    ball
 };

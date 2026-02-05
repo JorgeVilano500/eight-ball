@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import viteLogo from '/vite.svg'
 import './App.css'
 import BallCanvas from './canvas/Ball'
-import {html} from './assets'
+import {ball} from './assets'
 import { Navbar } from './components'
 import {responses} from './utils/responses'
 
@@ -67,7 +67,7 @@ function App() {
         <section>
           <div className={`mt-[clamp(12px,8vh,72px)] flex justify-center transition-all duration-700 delay-300 ease-out ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
             <button className='cursor-pointer' onClick={onSubmitForm}>
-              <BallCanvas icon={html}/>
+              <BallCanvas icon={ball}/>
             </button>
 
           </div>
